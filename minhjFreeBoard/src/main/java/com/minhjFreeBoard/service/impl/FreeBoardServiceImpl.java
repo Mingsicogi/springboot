@@ -22,4 +22,10 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		return freeBoardDAO.list();
 	}
 
+	@Override
+	public void insert(PostsDTO dto) {
+		// TODO Auto-generated method stub
+		freeBoardDAO.insert(dto);
+	}
+	
 }

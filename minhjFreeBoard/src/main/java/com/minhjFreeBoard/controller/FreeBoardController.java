@@ -26,4 +26,10 @@ public class FreeBoardController {
 		mav.addObject("chk","send ok");//보낸 데이터를 template이 잘 받았는지 확인
 		return mav;
 	}
+	
+	@RequestMapping("freeboard.doinsert")
+	public ModelAndView freeBoardInsert(ModelAndView mav) {
+		mav.setViewName("fbsub/writenew");
+		return mav;
+	}
 }

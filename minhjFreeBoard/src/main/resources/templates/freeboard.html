@@ -4,6 +4,8 @@
 <meta charset="UTF-8"/>
 <meta th:include="include/header::header" th:remove="tag"/>
 <title>Insert title here</title>
+<script th:src="@{//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
+<script th:src="@{/js/freeboard.js}"></script>
 </head>
 <body>
 <h1>Free Board</h1>
@@ -31,5 +33,6 @@ th:each="row:${list}" list이름으로 넘어온 값을 row라는 변수로 사�
 th:text="${row.xxx}" row변수가 가지고 있는 xxx를 텍스트로 출력하겠다는 내용
 th:href="@{view.do(seq=${row.seq})}" @리소스를 가리킴. 
 -->
+<input type="button" value="Write" id="btnWriteNewPost">
 </body>
 </html>
