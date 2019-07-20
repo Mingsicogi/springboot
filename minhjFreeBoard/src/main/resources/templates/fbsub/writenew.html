@@ -1,11 +1,59 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <head>
-<meta charset="UTF-8"/>
-<meta th:include="include/header::header" th:remove="tag"/>
+<meta charset="UTF-8" />
+<meta th:include="include/header::header" th:remove="tag" />
+<script
+	th:src="@{//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
+<script th:src="@{/js/writenew.js}"></script>
 <title>Write New Post</title>
 </head>
 <body>
-<h1>Write New Post</h1>
+	<h1>Write New Post</h1>
+<!-- 
+	<form role="form" method="GET" id="formWriteNewPost">
+		<div th:object="${PostsDTO}">
+			<input th:field="*{seq}" type="hidden"/>
+			ID : <input th:field="*{id}" type="text" name="txtWriter"/><br/><br/> 
+			Title<br/>
+			<input th:field="*{title}" type="text" name="txtTitle"/><br/>
+			<br/> Content:<br/>
+			<textarea th:field="*{content}" rows="20" cols="40" name="txtContent"></textarea>
+			<input type="button" value="save" id="btnSavePost"/>
+		</div>
+	</form>
+<form action="#" th:action="@{/freeboard.writenew.savepost}" th:object="${PostsDTO}" method="GET">
+	<table border="1">
+		<tr>
+ 			<td><label th:text="ggg"></label></td>
+			<td><input type="text" th:field="${seq}"/></td>
+			<td><input type="text" th:field="*{id}"/></td>
+			<td><input type="text" th:field="*{title}"/></td>
+			<td><input type="text" th:field="*{content}"/></td>
+			<td><input type="date" th:field="*{post_date}"/></td>
+			<td><input type="number" th:field="*{del}"/></td>
+			<td><input type="number" th:field="*{readcount}"/></td>
+		</tr>
+	</table>
+</form>
+ -->
+<form class="m-t" role="form" th:action="@{/freeboard.writenew.savepost}"
+	th:object="${PostsDTO}" action="#" id="saveNewPostForm" method="GET">
+	<div class="form-group">
+		<input type="text" name="inputTitle" id="inputTitle" class="form-control"
+			placeholder="title" required="required" th:field="*{title}"></input>
+	</div>
+form!
+</form>
+
+<pre>
+1. form설정 : role="form", method="GET"
+2. div 설정
+	- th:object="${PostsDTO}"
+3. field 설정
+	- 서버로 값을 전달해야 하기 때문에 field 설정
+	- th:field="*{DTO변수명}"	
+</pre>
 </body>
 </html>

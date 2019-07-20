@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,9 +28,16 @@ public class FreeBoardController {
 		return mav;
 	}
 	
-	@RequestMapping("freeboard.doinsert")
-	public ModelAndView freeBoardInsert(ModelAndView mav) {
+	@RequestMapping("freeboard.writenew")
+	public ModelAndView freeBoardWriteNew(ModelAndView mav) {
 		mav.setViewName("fbsub/writenew");
 		return mav;
+	}
+	
+	@RequestMapping("freeboard.writenew.savepost")
+	public void freeBoardInsert(@ModelAttribute(value="PostsDTO") PostsDTO dto) {
+		System.out.println("왔다!");
+		System.out.println(dto.toString());
+
 	}
 }

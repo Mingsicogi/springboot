@@ -3,7 +3,7 @@
  */
 $(function(){
 	$("#btnWriteNewPost").click(function(){
-		location.href="/freeboard.doinsert";
+		location.href="/freeboard.writenew";
 	});
 });
 
