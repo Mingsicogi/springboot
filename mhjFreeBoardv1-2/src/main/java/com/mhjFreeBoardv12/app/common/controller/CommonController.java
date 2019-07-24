@@ -1,5 +1,5 @@
 package com.mhjFreeBoardv12.app.common.controller;
-
+ 
 import java.util.Locale;
 
 import org.springframework.stereotype.Controller;

@@ -1,5 +1,5 @@
 package com.mhjFreeBoardv12.app.freeboard.vo;
-
+ 
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
