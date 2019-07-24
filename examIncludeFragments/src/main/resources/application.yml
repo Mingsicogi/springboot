@@ -1,0 +1,25 @@
+server:
+  port: 18087
+  
+ 
+#db config
+spring:
+  datasource:
+    hikari:
+      jdbc-url: jdbc:oracle:thin:@localhost:1521/xe
+      pool-name: hikari-cp
+      maximum-pool-size: 30
+      minimum-idle: 2
+      driver-class-name: oracle.jdbc.driver.OracleDriver
+      username: hr
+      password: hr
+ 
+        
+  thymeleaf:
+    cache: false
+    enabled: true
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+    check-template-location: true
+    mode: LEGACYHTML5
