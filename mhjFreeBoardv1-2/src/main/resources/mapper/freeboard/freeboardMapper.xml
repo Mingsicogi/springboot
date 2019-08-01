@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- mybatis가 가져가는 doctype이라고 정의한 내용 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+
+<mapper namespace="freeboard">
+
+	<!-- PK인 seq를 기준으로 BBS DB에서 하나의 row를 찾아 해당 값을 VO로 리턴 -->
+	<select id="selectOnePost" parameterType="com.mhjFreeBoardv12.app.freeboard.vo.FreeboardVO" resultType="com.mhjFreeBoardv12.app.freeboard.vo.FreeboardVO">
+		SELECT
+		*
+		FROM BBS
+		WHERE SEQ = #{seq}	
+	</select>
+	
+	<!-- BBS DB에서 모든 row를 List로 리턴 -->
+	<select id="selectAllPost" resultType="com.mhjFreeBoardv12.app.freeboard.vo.FreeboardVO">
+		SELECT
+		*
+		FROM BBS
+		ORDER BY SEQ DESC
+	</select>
+</mapper>
