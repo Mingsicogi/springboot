@@ -25,6 +25,7 @@ public class FreeBoardController {
 		System.out.println("DB list size : " + lst.size()); //DB에서 받아온 List size 확인
 		mav.addObject("list", lst);
 		mav.addObject("chk","send ok");//보낸 데이터를 template이 잘 받았는지 확인
+		System.out.println(lst.get(0).getClass());
 		return mav;
 	}
 	

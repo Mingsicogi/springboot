@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+  layout:decorator="layout/defaultLayout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Write new post</h1>
+<table>
+	<tr>
+		<td>ID : </td>
+		<td th:text="#{sss}"></td>
+	</tr>
+</table>
+<th:block th:include="fragments/commonHeader"></th:block>
+</body>
+</html>

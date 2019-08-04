@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<!-- mybatis가 가져가는 doc type 이라고 정의한 코드 -->
+
+<mapper namespace="admin.member">
+	<select id="selectMemberOne" parameterType="com.mybatisAndTransaction.app.common.vo.MemberVO" resultType="com.mybatisAndTransaction.app.common.vo.MemberVO">
+		SELECT 
+			* 
+		FROM member 
+		WHERE email = #{email}
+	</select>
+	
+	<!-- 단건 추가 -->
+	<insert id="insertMemberOne" parameterType="com.mybatisAndTransaction.app.common.vo.MemberVO">
+		INSERT INTO
+		member(
+			id,
+			name,
+			email
+		)
+		VALUES(
+			#{id},
+			#{name},
+			#{email}
+		)
+	</insert>
+</mapper>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>MyBatis and Transaction</h1>
+
+<pre>
+MyBatis - DB 연동
+1. application.yml 작성
+  > application.properties의 파일명만 바꿔서 작성
+  > 차이점은 가독성뿐
+2. OracleDBConfiguration.java 작성
+  > 세부내용, 절차, 의미는 해당 파일에 작성(com.mybatisAndTransaction.app.config)
+3. xml파일로 쿼리문 작성
+4. DAO, Service, VO 작성
+5. DB table create
+6. jUnit 수행 테스트(src/test/java)
+</pre>
+
+<pre>
+view template 작성
+1. Controller 작성
+2. template 작성(html)
+3. view 확인
+  > 500 에러 발생 : ViewResolver
+  	javax.servlet.ServletException: Circular view path [welcome]: would dispatch back to the current handler URL 
+  	[/welcome] again. Check your ViewResolver setup! 
+  	(Hint: This may be the result of an unspecified view, due to default view name generation.)
+  > thymeleaf dependency가 없었음
+  	- thymeleaf, thymeleaf-spring4 추가함
+  > 404 : 500에러는 발생하지 않는데 페이지를 못찾음
+  	- Controller는 작동함
+  	- prefix, suffix 설정이 없었음 -> application.yml에 작성해줬음
+  	- 그래도 안됨 <i>외않되?</i>
+  > dependency 수정해줬습니다 :)
+</pre>
+</body>
+</html>

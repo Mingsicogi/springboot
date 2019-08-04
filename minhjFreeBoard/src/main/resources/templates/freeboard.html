@@ -17,14 +17,16 @@
 		<th>Date</th>
 		<th>Hit</th>
 	</tr>
+
 	<tr th:each="row:${list}">
 		<td><span th:text="${row.seq}"></span></td>
-		<!-- <td><a th:href="@{view.do(seq=${row.seq})}"><span th:text="${row.title}"></span></a></td> -->
+		<td><a th:href="@{view.do(seq=${row.seq})}"><span th:text="${row.title}"></span></a></td>
 		<td><span th:text="${row.title}"></span></td>
 		<td><span th:text="${row.id}"></span></td>
 		<td><span th:text="${#dates.format(row.post_date, 'yyyy-mm-dd HH:mm:ss')}"></span></td>
 		<td><span th:text="${row.readcount}"></span></td>
 	</tr>
+	 
 </table>
 <h1 th:text="${chk}"></h1><!-- 컨트롤러가 보낸 데이터를 잘 받았는지 확인 -->
 <!-- 
