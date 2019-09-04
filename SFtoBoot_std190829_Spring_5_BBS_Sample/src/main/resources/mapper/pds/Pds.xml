@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Pds">
+
+<!-- PDS DB에서 자료실의 모든 정보를 가져오는 쿼리 -->
+<select id="getAllPdsList" resultType="com.sample.app.pds.model.PdsDTO">
+	SELECT *
+	FROM PDS
+</select>
+
+<!-- PDS DB에서 검색조건에 맞는 자료실의 정보를 가져오는 쿼리 -->
+<select id="getPdsList" resultType="com.sample.app.pds.model.PdsDTO" parameterType="com.sample.app.pds.model.PdsOrderOption">
+	SELECT RNUM, SEQ, ID, TITLE, CONTENT, FILENAME, ORIGIN_FILENAME, READCOUNT, DOWNCOUNT, REGDATE
+	FROM 	(
+				SELECT ROWNUM AS RNUM, SEQ, ID, TITLE, CONTENT, FILENAME, ORIGIN_FILENAME, READCOUNT, DOWNCOUNT, REGDATE
+				FROM 	(
+							SELECT SEQ, ID, TITLE, CONTENT, FILENAME, ORIGIN_FILENAME, READCOUNT, DOWNCOUNT, REGDATE 
+							FROM PDS
+							<include refid="searchOption"></include>
+			                ORDER BY SEQ DESC
+						)
+				ORDER BY RNUM
+			)
+	WHERE RNUM BETWEEN #{startSeq} AND #{endSeq}
+</select>
+
+<!-- PDS DB에서 seq에 맞는 값 1개를 리턴하는 쿼리 -->
+<select id="getPdsDetail" resultType="com.sample.app.pds.model.PdsDTO" parameterType="java.lang.Integer">
+	SELECT *
+	FROM PDS
+	WHERE SEQ=#{seq}
+</select>
+
+<!-- 새 자료 업로드 -->
+<insert id="uploadPds" parameterType="com.sample.app.pds.model.PdsDTO">
+	INSERT INTO PDS (SEQ, ID, TITLE, CONTENT, FILENAME, ORIGIN_FILENAME, READCOUNT, DOWNCOUNT, REGDATE)
+	VALUES (SEQ_PDS.NEXTVAL, #{id}, #{title}, #{content}, #{filename}, #{origin_filename}, 0, 0, SYSDATE)
+</insert>
+
+<!-- downcount + 1 -->
+<update id="plusDownCount" parameterType="java.lang.Integer">
+	UPDATE PDS SET DOWNCOUNT=DOWNCOUNT+1
+	WHERE SEQ=#{seq}
+</update>
+
+
+<!-- 검색 조건에 맞는 총 자료 수  -->
+<select id="getTotalSize" resultType="java.lang.Integer" parameterType="com.sample.app.pds.model.PdsOrderOption">
+	SELECT COUNT(*)
+	FROM PDS
+	<include refid="searchOption"></include>
+</select>
+
+<!-- 삽입 sql -->
+<sql id="searchOption">
+	<choose>
+		<when test="condquery == 'all'">
+			WHERE 1=1 AND ( TITLE LIKE '%'||#{keyword}||'%'
+			OR content LIKE '%'||#{keyword}||'%'
+			OR id LIKE '%'||#{keyword}||'%'
+			OR origin_filename LIKE '%'||#{keyword}||'%' )
+		</when>
+		<otherwise>
+			WHERE 1=1 AND ${condquery} like '%'||#{keyword}||'%'
+		</otherwise>
+	</choose>
+</sql>
+
+</mapper>
