@@ -41,8 +41,11 @@
 </div>
 
 <script type="text/javascript">
+function getContextPath(){
+	return '<%=request.getContextPath() %>';
+}
 $(document).ready(function(){
-	$("#content_title_wrap div.title").css("background-image", "url('./image/ico_sub_sb.gif')");
+	$("#content_title_wrap div.title").css("background-image", "url(getContextPath() + '/image/ico_sub_sb.gif')");
 });
 </script>
 

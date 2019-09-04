@@ -11,4 +11,8 @@ public class CommonController {
 		return "welcome";
 	}
 	
+	@RequestMapping(value = "memo")
+	public String memo() {
+		return "memo";
+	}
 }

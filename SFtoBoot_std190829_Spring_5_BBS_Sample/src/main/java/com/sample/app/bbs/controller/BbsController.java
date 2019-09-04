@@ -2,6 +2,8 @@ package com.sample.app.bbs.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +25,9 @@ public class BbsController {
 	BbsService bbsService;
 	
 	@RequestMapping(value = "bbslist", method= {RequestMethod.POST, RequestMethod.GET})
-	public String bbslist(Model model, BbsParam param) {		
+	public String bbslist(Model model, BbsParam param, HttpServletRequest req) {		
 		logger.info("BitBbsController : bbslist(), param:" + param.toString());
-		
+				
 		model.addAttribute("doc_title", "글목록");//제목 설정		
 		
 		//paging 처리, 현재 페이지가 0이면 1~10까지, 1이면 11부터 20까지

@@ -1,6 +1,10 @@
 package com.sample.app.member.controller;
 
 import java.util.Date;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sample.app.common.LatestURI;
 import com.sample.app.member.model.MemberDTO;
 import com.sample.app.member.service.MemberService;
 
@@ -33,10 +38,21 @@ public class MemberController {
 		return "login.tiles";
 	}
 
+	/**세션에서 로그인 정보를 없애고, 로그아웃을 클릭하기 직 전 페이지로 돌아가는 메소드.
+	 * @param req
+	 * @param uri
+	 * @return
+	 */
 	@RequestMapping(value = "logout")
-	public String logout(HttpServletRequest req) {
+	public String logout(HttpServletRequest req,LatestURI uri) {
+				
+		logger.info("uri : " + uri.toString());
+		
+		
 		req.getSession().removeAttribute("login");
-		return "login.tiles";
+		//return "login.tiles";
+		//return req.getSession().getAttribute("latestURI") + "";
+		return "redirect:" + uri.getUri();
 	}
 
 	/**

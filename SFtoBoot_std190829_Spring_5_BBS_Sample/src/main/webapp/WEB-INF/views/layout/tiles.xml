@@ -26,5 +26,29 @@
 		<put-attribute name="bottom_inc" value="/WEB-INF/views/common/bottom_inc.jsp"/>
 	</definition>
 
+	<!-- 일정관리 메인 페이지 -->
+	<definition name="calmain.tiles" extends="bbslist.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/calendar/calmain.jsp"/>
+	</definition>
+	
+	<!-- 자료실 메인 페이지 -->
+	<definition name="pdsmain.tiles" extends="bbslist.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/pds/pdsmain.jsp"/>
+		<put-attribute name="left_menu" value="/WEB-INF/views/pds/left_pds.jsp"/>
+	</definition>
+	<!-- 자료실 새 자료 업로드 페이지 -->
+	<definition name="pdswrite.tiles" extends="pdsmain.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/pds/pdswrite.jsp"/>
+	</definition>
+	<!-- 자료실 디테일 페이지 -->
+	<definition name="pdsdetail.tiles" extends="pdsmain.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/pds/pdsdetail.jsp"/>
+	</definition>
+	<!-- 자료실 수정 페이지 -->
+	<definition name="pdsmod.tiles" extends="pdsmain.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/pds/pdsmod.jsp"/>
+	</definition>
+	
+
 </tiles-definitions>
 

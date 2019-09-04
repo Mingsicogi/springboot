@@ -76,17 +76,6 @@
 	</tbody>
 </table>
 
-<!-- 페이징 : paging.jsp 인용 -->
-<div id="paging_wrap">
-	<!-- include로 가져올 jsp에 parameter를 보내는 방법 -->
-	<jsp:include page="/WEB-INF/views/bbs/paging.jsp" flush="false">
-		<jsp:param name="totalRecordCount" value="${totalRecordCount }"/>
-		<jsp:param name="pageNumber" value="${pageNumber }"/>
-		<jsp:param name="pageCountPerScreen" value="${pageCountPerScreen }"/>
-		<jsp:param name="recordCountPerPage" value="${recordCountPerPage }"/>
-	</jsp:include>
-</div>
-
 <script type="text/javascript">
 //페이징 링크 onclick에서 사용할 함수
 function goPage( pageNumber ){
