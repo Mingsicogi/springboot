@@ -57,10 +57,12 @@ document.addEventListener('DOMContentLoaded', function() {
     locale: 'ko',
     events: [
   	  {
+  		  id	: 'calevt1',
   		  title : 'evt1',
   		  start : '2019-09-03'
   	  },
   	  {
+  		  id	:	'calevt2',
   		  title	:	'evt2',
   		  start	:	'2019-09-10',
   		  end	:	'2019-09-20'
@@ -72,15 +74,114 @@ document.addEventListener('DOMContentLoaded', function() {
   	  }
     ]
   });
+  
+  var arrInit = initCalendarEventFromDB();
+  
+  $.each(arrInit, function(index, item){
+	  calendar.addEvent( item );
+	  //console.log('click evt loop_in_cal' + index + ' : ' + item);
+	  $.each(item, function(iii, ttt){
+			//console.log('click evt inner loop_in_cal => ' + iii + ' : ' + ttt);
+	  });
+  });
 
   calendar.render();
   
   var arrTest = getCalendarDataInDB();
   $.each(arrTest, function(index, item){
-		alert(index + ' : ' + item);
+		//console.log('outer loop_in_cal' + index + ' : ' + item);
+		$.each(item, function(iii, ttt){
+			//console.log('inner loop_in_cal => ' + iii + ' : ' + ttt);
+		});
+  });
+  
+  $("#btnAddTest").click(function(){
+	  //var arr = getCalendarEvent();
+	  var arr = getCalendarDataInDB();
+	  //console.log('arr[0].size : ' +  Object.keys( arr[0] ).length );
+	  $.each(arr, function(index, item){
+		  calendar.addEvent( item );
+		  //console.log('click evt loop_in_cal' + index + ' : ' + item);
+		  $.each(item, function(iii, ttt){
+				//console.log('click evt inner loop_in_cal => ' + iii + ' : ' + ttt);
+		  });
+	  });
+	  
+	  //calendar.addEvent( {'title':'evt4', 'start':'2019-09-04', 'end':'2019-09-06'});
+	  calendar.render();
+  });  
+  
+  calendar.on('eventClick', function(info){
+	  var str = '';
+	  $.each(info, function(index,item){
+		  //str += index + ':' + item + '  ';
+		  console.log( index + ':' + item + '  ' );
+		  $.each(item, function(iii, ttt){
+			  //str += iii + ':' + ttt + '  ';
+			  //console.log( iii + ':' + ttt + '  ' );
+			  if( iii === 'id'){
+				  //alert( iii + ':' + ttt );
+			  }
+		  });
+		 
+	  });
+	  var evtId = info.event.id;
+	  console.log('evtId : ' + evtId );
+	  console.log('evt : ' + calendar.getEventSourceById('calevt1') );
+	  var evtSource = calendar.getEventSourceById('calevt1');
+	  //console.log( evtId );
+	  console.log( evtSource );
+	  //alert( 'eventClick : ' + str ); 
+	  
+	  var evtSources = calendar.getEventSources();
+	  console.log( 'evt Sources : ' + evtSources );
+	  $.each(evtSources, function(index, item){
+		 console.log( index + ' : ' + item); 
+	  });
   });
   //alert( '캘린더에서 알린다!!! 잘 받았다! ' + (arrTest.0.id) );
 });
+
+function getCalendarEvent(){
+	//var arr = [ {'title':'evt4', 'start':'2019-09-04', 'end':'2019-09-06'} ];
+	var arr = { 'title':'evt4', 'start':'2019-09-04', 'end':'2019-09-06' };
+	return arr;
+}
+
+function initCalendarEventFromDB(){
+	var arr = [{title: 'evt1', start:'ssssss'}, {title: 'evt2', start:'123123123'}];
+	
+	//배열 초기화
+	var viewData = {};
+	//data[키] = 밸류
+	viewData["id"] = $("#currId").text().trim();
+	viewData["title"] = $("#title").val();
+	viewData["content"] = $("#content").val();
+	
+	$.ajax({
+		contentType:'application/json',
+		dataType:'json',
+		url:'calendar/getall',
+		type:'post',
+		async: false,
+		data:JSON.stringify(viewData),
+		success:function(resp){
+			//alert(resp.f.id + ' ggg'); 	
+			$.each(resp, function(index, item){
+				//console.log(index + ' : ' + item);
+				$.each(item, function(iii, ttt){
+					//console.log('inner loop => ' + iii + ' : ' + ttt);
+				});
+			});
+			arr = resp;
+		},
+		error:function(){
+			alert('저장 중 에러가 발생했습니다. 다시 시도해 주세요.');
+		}
+	});
+	
+	return arr;
+}
 
 function getCalendarDataInDB(){
 	var arr = [{title: 'evt1', start:'ssssss'}, {title: 'evt2', start:'123123123'}];
@@ -97,12 +198,17 @@ function getCalendarDataInDB(){
 		dataType:'json',
 		url:'calendar/getall',
 		type:'post',
+		async: false,
 		data:JSON.stringify(viewData),
 		success:function(resp){
 			//alert(resp.f.id + ' ggg'); 	
 			$.each(resp, function(index, item){
-				alert(index + ' : ' + item);
+				//console.log(index + ' : ' + item);
+				$.each(item, function(iii, ttt){
+					//console.log('inner loop => ' + iii + ' : ' + ttt);
+				});
 			});
+			arr = resp;
 		},
 		error:function(){
 			alert('저장 중 에러가 발생했습니다. 다시 시도해 주세요.');
@@ -175,6 +281,6 @@ function getCalendarDataInDB(){
     </p>
   </div>
 <div id='calendar'></div>
-
+<input type="button" id="btnAddTest" value="추가">
 </body>
 </html>
