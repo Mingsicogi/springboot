@@ -2,6 +2,8 @@ package com.mhjFreeBoardv12.app.freeboard.controller;
  
 import java.util.List;
 
+import javax.servlet.annotation.WebServlet;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,10 +28,12 @@ public class FreeboardController {
 		model.addAttribute("postList", lst);
 		
 		return "freeboard/freeboardmain";
-	}
+	}	
 	
 	@RequestMapping(value = "freeboard/postdetail")
 	public String freeboardPostDetail(Model model) {
 		return "freeboard/postdetail";
 	}
+	
+
 }
