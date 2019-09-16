@@ -1,16 +1,23 @@
 package com.cbt.app.exams.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**시험 - [문제] - 문항 중 문제에 대한 내용*/
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class ExamSubDTO {	
+@Getter
+@Setter
+@ToString
+public class ExamSubDTO implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	/**문제 고유번호 */
 	private int seq;
 	private int seq_exam;		//시험 고유번호(FK)
@@ -24,6 +31,27 @@ public class ExamSubDTO {
 	private String ans_sbj;		//주관식 추가 설명
 	private String right_answer;	//정답(1, 2, 3, 4, String answer)
 	private Date rdate;			//등록일
+	
+	@Builder
+	public ExamSubDTO() {}
+
+	@Builder
+	public ExamSubDTO(int seq, int seq_exam, double score, String title, String content, String ans_a, String ans_b,
+			String ans_c, String ans_d, String ans_sbj, String right_answer, Date rdate) {
+		super();
+		this.seq = seq;
+		this.seq_exam = seq_exam;
+		this.score = score;
+		this.title = title;
+		this.content = content;
+		this.ans_a = ans_a;
+		this.ans_b = ans_b;
+		this.ans_c = ans_c;
+		this.ans_d = ans_d;
+		this.ans_sbj = ans_sbj;
+		this.right_answer = right_answer;
+		this.rdate = rdate;
+	}
 }
 /*
 

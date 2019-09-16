@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Exam">
+
+<!-- 모든 시험정보 리턴 -->
+<select id="getAllExams" resultType="com.cbt.app.exams.model.ExamConditionDTO">
+	SELECT * 
+	FROM CBT_EXAM
+</select>
+
+<!-- 하나의 시험정보 리턴 -->
+<select id="getOneExam" parameterType="com.cbt.app.exams.model.ExamConditionDTO" resultType="com.cbt.app.exams.model.ExamConditionDTO">
+	SELECT * 
+	FROM CBT_EXAM
+	WHERE SUBJECT=#{subject} AND TEACHER=#{teacher} AND TITLE=#{title}
+</select>
+
+<!-- seq에 맞는 하나의 시험정보 리턴 -->
+<select id="getOneExamBySeq" parameterType="java.lang.Integer" resultType="com.cbt.app.exams.model.ExamConditionDTO">
+	SELECT * 
+	FROM CBT_EXAM
+	WHERE SEQ=#{seq}
+</select>
+
+<!-- subject에 맞는 시험정보들 리턴 -->
+<select id="getExamsBySubjectSeq" parameterType="java.lang.Integer" resultType="com.cbt.app.exams.model.ExamDTO">
+	SELECT * 
+	FROM CBT_EXAM
+	WHERE SUBJECT=#{subject}
+</select>
+
+<!-- 새 시험정보 입력 -->
+<insert id="insertNewExam" parameterType="com.cbt.app.exams.model.ExamConditionDTO">
+	INSERT INTO CBT_EXAM (SEQ, SUBJECT, TEACHER, TITLE, LIMIT_TIME, RDATE, SDATE, EDATE)
+	VALUES( SEQ_CBT_EXAM.NEXTVAL, #{subject}, #{teacher}, #{title}, #{limit_time}, SYSDATE, #{sdate}, #{edate} )
+</insert>
+
+</mapper>  

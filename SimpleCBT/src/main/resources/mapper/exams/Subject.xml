@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Subject">
+
+<!-- 모든 과목정보 리턴 -->
+<select id="getAllSubject" resultType="com.cbt.app.exams.model.SubjectDTO">
+	SELECT * 
+	FROM CBT_SUBJECT
+</select>
+
+<!-- 매개변수 교수자가 갖는 모든 과목정보 리턴 -->
+<select id="getSubjectsByTeacherNum" parameterType="java.lang.Integer" resultType="com.cbt.app.exams.model.SubjectDTO">
+	SELECT * 
+	FROM CBT_SUBJECT
+	WHERE TEACHER=#{teacher}
+</select>
+
+<!-- 매개변수 seq와 일치하는 과목정보 리턴 -->
+<select id="getSubjectBySeq" parameterType="java.lang.Integer" resultType="com.cbt.app.exams.model.SubjectDTO">
+	SELECT * 
+	FROM CBT_SUBJECT
+	WHERE SEQ=#{seq}
+</select>
+
+
+</mapper>  

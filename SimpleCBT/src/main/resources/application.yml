@@ -1,0 +1,34 @@
+#welcome examples
+server:
+  port: 18088
+#JSP config
+  servlet:
+    jsp:
+      init-parameters:
+        development: true
+#custume error page
+  error:
+    whitelabel:
+      enabled: false
+
+#spring config
+spring:  
+  #mvc:
+  #  view:
+  #    prefix: /WEB-INF/views/
+  #    suffix: .jsp
+  datasource:
+    hikari:
+      jdbc-url: jdbc:oracle:thin:@localhost:1521/xe
+      pool-name: hikari-cp
+      maximum-pool-size: 30
+      minimum-idle: 2
+      driver-class-name: oracle.jdbc.OracleDriver
+      username: hr
+      password: hr
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      enabled: true
+      file-size-threshold: 2KB

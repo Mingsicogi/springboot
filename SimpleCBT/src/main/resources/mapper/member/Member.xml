@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Member">
+
+<!-- 모든 멤버 리턴 -->
+<select id="getAllMember" resultType="com.cbt.app.member.model.MemberDTO">
+	SELECT * 
+	FROM CBT_MEMBER
+</select>
+
+<!-- 교수자 신규 등록 -->
+<insert id="addTeacher" parameterType="com.cbt.app.member.model.MemberDTO">
+	INSERT INTO CBT_MEMBER(SEQ, ID, PW, NAME, EMAIL, AUTH, RDATE)
+	VALUES(SEQ_CBT_MEMBER.NEXTVAL, #{id}, #{pw}, #{name}, #{email}, 2, SYSDATE)
+</insert>
+
+<!-- 학생 신규 등록 -->
+<insert id="addStudent" parameterType="com.cbt.app.member.model.MemberDTO">
+	INSERT INTO CBT_MEMBER(SEQ, ID, PW, NAME, EMAIL, AUTH, RDATE)
+	VALUES(SEQ_CBT_MEMBER.NEXTVAL, #{id}, #{pw}, #{name}, #{email}, 3, SYSDATE)
+</insert>
+
+<!-- 아이디가 있으면 1리턴, 없으면 0 리턴 -->
+<select id="getId" parameterType="com.cbt.app.member.model.MemberDTO" resultType="java.lang.Integer">
+	SELECT NVL(COUNT(*), 0)
+	FROM CBT_MEMBER
+	WHERE ID=#{id}	
+</select>
+
+<select id="login" parameterType="com.cbt.app.member.model.MemberDTO" resultType="com.cbt.app.member.model.MemberDTO">
+	SELECT *
+	FROM CBT_MEMBER
+	WHERE ID=#{id} AND PW=#{pw}
+</select>
+
+</mapper>  

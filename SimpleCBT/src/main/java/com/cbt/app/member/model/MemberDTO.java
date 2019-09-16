@@ -17,6 +17,15 @@ public class MemberDTO {
 	private String email;	//email
 	private int auth;		//학생(3)/교수자(2)/관리자(1)
 	private Date rdate;		//가입일
+	
+	/**로그인을 위한 생성자
+	 * @param id
+	 * @param pw
+	 */
+	public MemberDTO(String id, String pw) {
+		this.id = id;
+		this.pw = pw;
+	}
 }
 
 /*

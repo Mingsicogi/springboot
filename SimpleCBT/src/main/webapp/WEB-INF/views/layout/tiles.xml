@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<!-- listtest페이지 -->
+	<definition name="test" template="/WEB-INF/views/common/test.jsp">
+	</definition>
+
+
+	<!-- welcome 페이지 -->
+	<definition name="welcome" template="/WEB-INF/views/welcome.jsp">
+	</definition>
+
+	<!-- 로그인 페이지 -->
+	<definition name="login" template="/WEB-INF/views/member/login.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+	</definition>
+	
+	<!-- 회원가입 페이지 -->
+	<definition name="regi" template="/WEB-INF/views/member/regi.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+	</definition>
+
+	<!-- 교수자 메인 페이지 -->
+	<definition name="teacher/main" template="/WEB-INF/views/layout/layouts-tiles.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+		<put-attribute name="topinfo" value="/WEB-INF/views/common/topinfo.jsp"/>
+		<put-attribute name="topmenu" value="/WEB-INF/views/teacher/teachertopmenu.jsp"/>
+		<put-attribute name="main" value="/WEB-INF/views/teacher/teachermain.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
+	</definition>
+
+	<!-- 새 시험 조건 선택 페이지 -->
+	<definition name="teacher/newexam" extends="teacher/main">
+		<put-attribute name="main" value="/WEB-INF/views/teacher/newexam.jsp"/>
+	</definition>
+	
+	<!-- 새 시험 조건에 따라 세부내용을 입력하는 페이지 -->
+	<definition name="teacher/newexam/detail" extends="teacher/main">
+		<put-attribute name="main" value="/WEB-INF/views/teacher/newexamdetail.jsp"/>
+	</definition>
+
+
+	<!-- 학습자 메인 페이지 -->
+	<definition name="student/main" template="/WEB-INF/views/layout/layouts-tiles.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+		<put-attribute name="topinfo" value="/WEB-INF/views/common/topinfo.jsp"/>
+		<put-attribute name="topmenu" value="/WEB-INF/views/student/studenttopmenu.jsp"/>
+		<put-attribute name="main" value="/WEB-INF/views/student/studentmain.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
+	</definition>
+	
+	<!-- 학습자 시험 리스트를 보여주는 페이지 -->
+	<definition name="student/examlist" extends="student/main">
+		<put-attribute name="main" value="/WEB-INF/views/student/examlist.jsp"/>
+	</definition>
+</tiles-definitions>
+

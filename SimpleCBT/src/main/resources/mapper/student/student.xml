@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Student">
+
+<!-- 특정 학생의 모든 수강신청 정보 리턴 -->
+<select id="getAllAttendenceInfoOfOneStudent" parameterType="com.cbt.app.student.model.AttenderDTO" resultType="com.cbt.app.student.model.AttenderDTO">
+	SELECT * 
+	FROM CBT_ATTENDER
+	WHERE STUDENT_SEQ=#{student_seq}
+</select>
+
+<!-- 특정 학생의 특정 수강신청 정보 리턴 -->
+<select id="getOneAttendenceInfoOfOneStudent" parameterType="com.cbt.app.student.model.AttenderDTO" resultType="com.cbt.app.student.model.AttenderDTO">
+	SELECT * 
+	FROM CBT_ATTENDER
+	WHERE STUDENT_SEQ=#{student_seq} AND SUBJECT_SEQ=#{subject_seq}
+</select>
+
+
+</mapper>  

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="ExamDetail">
+
+<!-- 특정 시험의 응시문항 수 리턴 -->
+<select id="getExamDetailCount" parameterType="com.cbt.app.exams.model.ExamResultDTO" resultType="com.cbt.app.exams.model.ExamResultDTO">
+	SELECT NVL(COUNT(SEQ_EXAM), 0) AS SCORE_COUNT
+	FROM CBT_EXAM_DETAIL
+	WHERE SEQ_EXAM=#{exam_seq}
+	GROUP BY SEQ_EXAM
+</select>
+
+<!-- 특정 시험의 총점 리턴 -->
+<select id="getExamDetailSum" parameterType="com.cbt.app.exams.model.ExamResultDTO" resultType="com.cbt.app.exams.model.ExamResultDTO">
+	SELECT SUM(SCORE) 
+	FROM CBT_EXAM_DETAIL
+	WHERE SEQ_EXAM=#{exam_seq}
+	GROUP BY SEQ_EXAM
+</select>
+
+</mapper>  

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="ExamSub">
+
+<!-- 모든 문제정보 리턴 -->
+<select id="getAllExamSubs" resultType="com.cbt.app.exams.model.ExamSubDTO">
+	SELECT SEQ, SEQ_EXAM, SCORE, TITLE, NVL(CONTENT,''), NVL(ANS_A,''), NVL(ANS_B,''), NVL(ANS_C,''), NVL(ANS_D,''), NVL(ANS_SBJ,''), RIGHT_ANSWER, RDATE
+	FROM CBT_EXAM_SUB
+</select>
+
+<!-- 시험 번호에 맞는 모든 문제 정보 리턴 -->
+<select id="getAllExamsubsByExamseq" parameterType="java.lang.Integer" resultType="com.cbt.app.exams.model.ExamSubDTO">
+	SELECT * 
+	FROM CBT_EXAM_SUB
+	WHERE SEQ_EXAM=#{seq_exam}
+</select>
+
+<!-- 문제정보 저장 -->
+<insert id="insertNewExamsub" parameterType="com.cbt.app.exams.model.ExamSubDTO">
+	INSERT INTO CBT_EXAM_SUB (SEQ, SEQ_EXAM, SCORE, TITLE, CONTENT, ANS_A, ANS_B, ANS_C, ANS_D, ANS_SBJ, RIGHT_ANSWER, RDATE)
+	VALUES ( SEQ_CBT_EXAM_SUB.NEXTVAL, #{seq_exam}, #{score}, #{title}, #{content}, #{ans_a}, #{ans_b}, #{ans_c}, #{ans_d}, #{ans_sbj}, #{right_answer}, SYSDATE )
+</insert>
+
+</mapper>  
