@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-welcomewelcomewelcomewelcomewelcomewelcomewelcomewelcomewelcome
-welcomewelcomewelcomewelcomewelcomewelcomewelcomewelcomewelcome
-welcomewelcomewelcomewelcomewelcomewelcomewelcomewelcomewelcome
-welcomewelcomewelcomewelcomewelcomewelcomewelcomewelcomewelcome
-welcomewelcomewelcomewelcomewelcomewelcomewelcomewelcomewelcome
+Welcome Maria DB!
+
+<c:forEach items="${list }" var="dto">
+id:${dto.id }, pw:${dto.pw }
+</c:forEach>
 </body>
 </html>

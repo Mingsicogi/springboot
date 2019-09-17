@@ -1,6 +1,6 @@
-#Spring Security examples
+#Spring Security Exam Project
 server:
-  port: 18089
+  port: 18081
 #JSP config
   servlet:
     jsp:
@@ -10,25 +10,19 @@ server:
   error:
     whitelabel:
       enabled: false
-
-#spring config
-spring:  
-  #mvc:
-  #  view:
-  #    prefix: /WEB-INF/views/
-  #    suffix: .jsp
+ 
+#db config
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
   datasource:
     hikari:
-      jdbc-url: jdbc:oracle:thin:@localhost:1521/xe
+      jdbc-url: jdbc:mysql://localhost:3306/rhymes?characterEncoding=UTF-8&serverTimezone=UTC
       pool-name: hikari-cp
       maximum-pool-size: 30
       minimum-idle: 2
-      driver-class-name: oracle.jdbc.OracleDriver
-      username: hr
-      password: hr
-  servlet:
-    multipart:
-      max-file-size: 10MB
-      max-request-size: 10MB
-      enabled: true
-      file-size-threshold: 2KB      
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: mhj
+      password: mhj
