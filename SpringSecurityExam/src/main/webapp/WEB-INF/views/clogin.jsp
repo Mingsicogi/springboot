@@ -9,7 +9,9 @@
 <body>
 
 <div class="login_wrap" style="width: 50%; margin:auto; margin-top: 200px;">
-	<form action="/login">
+	<form action="/login/do">
+		<!-- csrf 예방을 위한 코드추가 -->
+ 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<table>
 			<tr>
 				<td>

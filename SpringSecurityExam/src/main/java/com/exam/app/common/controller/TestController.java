@@ -1,42 +1,39 @@
 package com.exam.app.common.controller;
 
-import java.util.List;
-
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.exam.app.common.model.TestDTO;
-
-
-
+@RequestMapping("/exam/*")
 @Controller
 public class TestController {
 
+	private Logger logger = LoggerFactory.getLogger(TestController.class);
 	
-	@Autowired
-	SqlSession sqlSession;
 	
-	String ns = "common.";
-	
-	@RequestMapping("/welcome")
-	public String welcome(Model model) {
-		System.out.println("컨트롤러!!!!!!!!!!");
+	@GetMapping("/all")
+	public String welcome() {
 		
-		List<TestDTO> lst = sqlSession.selectList(ns + "getList");
-		
-		System.out.println("리스트 길이 : " + lst.size());
-		
-		model.addAttribute("list", lst);
+		logger.info("welcome");
 		
 		return "welcome";
 	}
 	
-	@RequestMapping("/welcome2")
-	public String welcome2() {
-		System.out.println("2222222222222컨트롤러!!!!!!!!!!");
-		return "tests/jsregularexpressiontest";
+	@GetMapping("/member")
+	public String memberWelcome() {
+		
+		logger.info("member welcome");
+		
+		return "member/main";
+	}
+	
+	@GetMapping("/admin")
+	public String adminWelcome() {
+		
+		logger.info("admin welcome");
+		
+		return "admin/main";
 	}
 }

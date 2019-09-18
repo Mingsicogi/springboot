@@ -59,22 +59,9 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		 http
 		 	.authorizeRequests()
-		 		.antMatchers("/member","/member/*").authenticated()
-		 		.antMatchers("/logingo","/logingo/*").authenticated()
-		 		.antMatchers("/login","/login/*").authenticated()
-		 		.anyRequest().permitAll()
-		 		.and()
-		 	.formLogin()
-		 		.loginPage(LOGIN_PAGE_URI)
-		 		.permitAll()
-		 		.defaultSuccessUrl("/welcome")
-		 		.and()
-		 	.logout()
-		 		.logoutUrl("/logout")
-		 		.logoutSuccessUrl(LOGIN_PAGE_URI)
-		 		.invalidateHttpSession(true)
-		 		.permitAll();
-		
+		 		.antMatchers("/welcome").permitAll()
+		 		.antMatchers("/admin","/admin/*").access("hasRole('ROLE_ADMIN')")
+		 		.antMatchers("/member","/member/*").access("hasRole('ROLE_MEMBER')");		
 	}
 	
 	@Bean
