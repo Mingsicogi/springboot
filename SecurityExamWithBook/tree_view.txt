@@ -1,0 +1,50 @@
+¦§¦¡src
+¦¢  ¦§¦¡main
+¦¢  ¦¢  ¦§¦¡java
+¦¢  ¦¢  ¦¢  ¦¦¦¡com
+¦¢  ¦¢  ¦¢      ¦¦¦¡exam
+¦¢  ¦¢  ¦¢          ¦¢  SecurityExamWithBookApplication.java
+¦¢  ¦¢  ¦¢          ¦¢  ServletInitializer.java
+¦¢  ¦¢  ¦¢          ¦§¦¡app
+¦¢  ¦¢  ¦¢          ¦¢  ¦§¦¡common
+¦¢  ¦¢  ¦¢          ¦¢  ¦¢  ¦§¦¡controller
+¦¢  ¦¢  ¦¢          ¦¢  ¦¢  ¦¢      LoginController.java
+¦¢  ¦¢  ¦¢          ¦¢  ¦¢  ¦¢      TestController.java
+¦¢  ¦¢  ¦¢          ¦¢  ¦¢  ¦§¦¡dao
+¦¢  ¦¢  ¦¢          ¦¢  ¦¢  ¦¢      CommonDAO.java
+¦¢  ¦¢  ¦¢          ¦¢  ¦¢  ¦¦¦¡model
+¦¢  ¦¢  ¦¢          ¦¢  ¦¢          AuthDTO.java
+¦¢  ¦¢  ¦¢          ¦¢  ¦¢          TestDTO.java
+¦¢  ¦¢  ¦¢          ¦¢  ¦§¦¡config
+¦¢  ¦¢  ¦¢          ¦¢  ¦¢  ¦§¦¡db
+¦¢  ¦¢  ¦¢          ¦¢  ¦¢  ¦¢      MariaDBConfiguration.java
+¦¢  ¦¢  ¦¢          ¦¢  ¦¢  ¦¦¦¡security
+¦¢  ¦¢  ¦¢          ¦¢  ¦¢          RootConfig.java
+¦¢  ¦¢  ¦¢          ¦¢  ¦¢          SecurityInitializer.java
+¦¢  ¦¢  ¦¢          ¦¢  ¦¢          SpringSecurityConfiguration.java
+¦¢  ¦¢  ¦¢          ¦¢  ¦¢          WebConfig.java
+¦¢  ¦¢  ¦¢          ¦¢  ¦¦¦¡security
+¦¢  ¦¢  ¦¢          ¦¢      ¦¢  CustomLoginSuccessHandler.java
+¦¢  ¦¢  ¦¢          ¦¢      ¦¢  CustomLogoutSuccessHandler.java
+¦¢  ¦¢  ¦¢          ¦¢      ¦¢  CustomUserDetailsService.java
+¦¢  ¦¢  ¦¢          ¦¢      ¦¦¦¡domain
+¦¢  ¦¢  ¦¢          ¦¢              CustomUser.java
+¦¢  ¦¢  ¦¢          ¦¦¦¡test
+¦¢  ¦¢  ¦§¦¡resources
+¦¢  ¦¢  ¦¢  ¦¢  application.yml
+¦¢  ¦¢  ¦¢  ¦§¦¡mapper
+¦¢  ¦¢  ¦¢  ¦¢  ¦¦¦¡common
+¦¢  ¦¢  ¦¢  ¦¢          dbmapper.xml
+¦¢  ¦¢  ¦¢  ¦¢          TestDTOMapper.xml
+¦¢  ¦¢  ¦¢  ¦§¦¡static
+¦¢  ¦¢  ¦¢  ¦¦¦¡templates
+¦¢  ¦¢  ¦¦¦¡webapp
+¦¢  ¦¢      ¦¦¦¡WEB-INF
+¦¢  ¦¢          ¦¦¦¡views
+¦¢  ¦¢              ¦¢  clogin.jsp
+¦¢  ¦¢              ¦¢  clogout.jsp
+¦¢  ¦¢              ¦¢  welcome.jsp
+¦¢  ¦¢              ¦§¦¡admin
+¦¢  ¦¢              ¦¢      main.jsp
+¦¢  ¦¢              ¦¦¦¡member
+¦¢  ¦¢                      main.jsp

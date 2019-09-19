@@ -1,7 +1,6 @@
 package com.exam.app.common.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,11 +13,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TestDTO implements Serializable {
-
+public class AuthDTO implements Serializable {
 	private String userid;
-	private String userpw;
-	private boolean enabled;
-	private List<AuthDTO> authList;
-		
+	private String auth;
 }
