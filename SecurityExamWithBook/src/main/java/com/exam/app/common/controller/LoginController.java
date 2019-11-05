@@ -17,7 +17,7 @@ public class LoginController {
 	
 	@RequestMapping("/customlogin")
 	public String loginMain() {		
-		String pass = "qlalfqjsgh";		
+		String pass = "ADMIN";		
 		log.info("암호화전 : " + pass + ", 암호화후 : " + pwe.encode("pw"));		
 		return "clogin";
 	}

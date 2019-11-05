@@ -26,4 +26,9 @@ public class CommonController {
 		return "test";
 	}
 	
+	@RequestMapping(value = "/logingo")
+	public String login() {
+		System.out.println("로그인 거쳤음");
+		return "member/login";
+	}
 }
