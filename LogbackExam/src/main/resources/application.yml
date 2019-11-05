@@ -1,0 +1,59 @@
+#Project RHYMES
+server:
+  port: 19082
+#JSP config
+  servlet:
+    jsp:
+      init-parameters:
+        development: true
+#custume error page
+  error:
+    whitelabel:
+      enabled: true
+
+spring:
+  #db config
+  datasource: 
+    hikari:
+      jdbc-url: jdbc:mysql://localhost:3306/rhymes?characterEncoding=UTF-8&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+      pool-name: hikari-cp
+      maximum-pool-size: 30
+      minimum-idle: 2
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: mhj
+      password: mhj
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    properties:
+      hibernate:
+        show-sql: true
+        format_sql: true
+    generate-ddl: true
+  #jsp
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      enabled: true
+      file-size-threshold: 10MB
+      
+logging:
+  config: classpath:logback-spring.xml
+  file:
+   path: logs
+  level: 
+    org.springframework: INFO
+    org:     
+     #JPA Hibernate 로깅
+     hibernate:
+      SQL: DEBUG
+      type:
+       descriptor:
+         sql:
+           BasicBinder: TRACE
